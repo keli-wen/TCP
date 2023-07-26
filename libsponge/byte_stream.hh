@@ -2,7 +2,7 @@
 #define SPONGE_LIBSPONGE_BYTE_STREAM_HH
 
 #include <string>
-
+#include <queue>
 //! \brief An in-order byte stream.
 
 //! Bytes are written on the "input" side and read from the "output"
@@ -12,11 +12,15 @@ class ByteStream {
   private:
     // Your code here -- add private members as necessary.
 
+    size_t _capacity;
+    size_t _buffer_read_count;
+    size_t _buffer_written_count;
+    std::deque<char> _buffer;
     // Hint: This doesn't need to be a sophisticated data structure at
     // all, but if any of your tests are taking longer than a second,
     // that's a sign that you probably want to keep exploring
     // different approaches.
-
+    bool _end_input{}; //?< Flag indicating that the stream has end the input.
     bool _error{};  //!< Flag indicating that the stream suffered an error.
 
   public:
