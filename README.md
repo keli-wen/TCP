@@ -1,3 +1,5 @@
+# <img src="misc/figures/stanford.png" style="width:1.5em; vertical-align: middle;"> Stanford CS144
+
 For build prereqs, see [the CS144 VM setup instructions](https://web.stanford.edu/class/cs144/vm_howto).
 
 ## Sponge quickstart
