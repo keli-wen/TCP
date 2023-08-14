@@ -64,7 +64,7 @@ To generate documentation (you'll need `doxygen`; output will be in `build/doc/`
 
     $ make doc
 
-To format (you'll need `clang-format`):
+To format (you'll need `clang-format` and you may need to modify `set (CLANG_FORMAT_TMP clang-format)` in `etc/clang_format.cmake`):
 
     $ make format
 
