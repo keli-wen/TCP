@@ -3,8 +3,12 @@
 
 #include "byte_stream.hh"
 
+// For assert.
+#include <cassert>
 #include <cstdint>
+#include <limits>
 #include <string>
+#include <vector>
 
 //! \brief A class that assembles a series of excerpts from a byte stream (possibly out of order,
 //! possibly overlapping) into an in-order byte stream.
@@ -12,8 +16,13 @@ class StreamReassembler {
   private:
     // Your code here -- add private members as necessary.
 
-    ByteStream _output;  //!< The reassembled in-order byte stream
-    size_t _capacity;    //!< The maximum number of bytes
+    ByteStream _output;               //!< The reassembled in-order byte stream
+    size_t _capacity;                 //!< The maximum number of bytes
+    size_t _cur_index;                //!< The current index of the buffer
+    size_t _eof_index;                //!< The index of the last byte of the entire stream
+    size_t _unassembled_bytes_count;  //!< The number of bytes in the substrings stored but not yet reassembled
+    //!< The data buffer, with a flag indicating whether the byte has been pushed
+    std::vector<std::pair<char, bool>> _buffer;
 
   public:
     //! \brief Construct a `StreamReassembler` that will store up to `capacity` bytes.
