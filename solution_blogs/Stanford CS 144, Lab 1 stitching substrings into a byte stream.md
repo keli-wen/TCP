@@ -8,7 +8,7 @@
 
 The lab assignments will ask you to build up a TCP implementation in a modular way. Remember the `ByteStream` you just implemented in Lab 0? In the next four labs, you’ll end up convey two of them across the network: an “outbound” `ByteStream`, for data that a local application writes to a socket and that your TCP will send to the peer, and an “inbound” `ByteStream` for data coming from the peer that will be read by a local application. Figure 1 shows how the pieces fit together.
 
- ![image-20230822234015644](../assets/lab1_1.png)
+ ![lab1_1](assets/lab1_1.png)
 
 - In Lab 1, you’ll implement a *stream reassembler*—a module that stitches small pieces of the byte stream (known as substrings, or **segments**) back into a contiguous stream of bytes in the correct sequence.
 
@@ -51,7 +51,7 @@ bool empty() const;
 ```
 
 首先我们的重点是理解 `capacity` ，最开始我就是因为理解错 `capacity` 导致全部写错了。Official PDF 中给出了一个非常好理解的图：
-![image-20230823000929416](../assets/lab1_2.png)
+![lab1_2](assets/lab1_2.png)
 
 我们会发现 `capacity` 限制了：**`ByteStream` 中的未读区字节和 `StreamReassembler` 中的未重新组装的字节总量。**  所以，我们在后续初始化和实现 `push_substring` 逻辑时要注意这个细节。
 
@@ -184,6 +184,6 @@ bool StreamReassembler::empty() const { return unassembled_bytes() == 0; }
 
 最后 `Test` 结果如下：
 
-![image-20230825003335681](../assets/lab1_3.png)
+![lab1_result](assets/lab1_3.png)
 
 时间复杂度感觉略高了，但是目前也没想到很好的优化途径。
