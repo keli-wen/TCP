@@ -3,7 +3,7 @@
 For build prereqs, see [the CS144 VM setup instructions](https://web.stanford.edu/class/cs144/vm_howto).
 
 For my solution blogs:
-- [Lab 1](solution_blogs/CS144_Lab1_sol)
+- [Lab 1](solution_blogs/CS144_Lab1_sol.md)
 
 ## Sponge quickstart
 
